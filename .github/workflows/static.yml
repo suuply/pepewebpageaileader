@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레퍼런스HRD | 하이엔드 기업 AI 교육 파트너</title>
+    
+    <!-- 프리텐다드 폰트 적용 (B2B 표준) -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            900: '#1e3a8a',
+                            950: '#172554',
+                        },
+                        accent: '#fbbf24', // Yellow-400
+                    },
+                    animation: {
+                        'marquee': 'marquee 30s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #0f172a; /* Slate 900 - Dark mode base for tech feel */
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Fade Up Animation Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Tech Grid Background */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(90deg, #60a5fa, #c084fc);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary-500 selection:text-white">
+
+    <header class="fixed top-0 w-full z-50 glass border-b border-white/10 transition-all duration-300" id="header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold group-hover:rotate-12 transition-transform">
+                        R
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white">REFERENCE <span class="text-blue-400">HRD</span></span>
+                </a>
+                
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#why" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Why Us</a>
+                    <a href="#solutions" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Solutions</a>
+                    <a href="#curriculum" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Curriculum</a>
+                    <a href="#instructors" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Instructors</a>
+                    <a href="#clients" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Clients</a>
+                </nav>
+
+                <!-- CTA & Auth Button -->
+                <div class="hidden md:flex items-center gap-5">
+                    <button id="headerAuthBtn" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">로그인</button>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-white text-primary-950 text-sm font-bold hover:bg-slate-200 transition-all shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:scale-105">
+                        도입 문의
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-grid z-0"></div>
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 z-0"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/3 z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Text -->
+                <div class="reveal">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border-blue-500/30 text-blue-300 text-sm font-medium mb-6">
+                        <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                        기업 AI 교육의 새로운 레퍼런스
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] mb-6">
+                        HRD 전문기업이<br>설계하는 <br>
+                        <span class="text-gradient">진짜 AI 교육</span>
+                    </h1>
+                    <p class="text-lg lg:text-xl text-slate-400 mb-10 max-w-xl leading-relaxed">
+                        AI 교육의 성과는 단순한 툴 숙련도가 아닙니다.<br>
+                        우리는 <strong class="text-white font-semibold">업무 방식의 근본적인 변화</strong>로 가치를 증명합니다.
+                    </p>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-10 pb-10 border-b border-white/10">
+                        <div>
+                            <div class="text-3xl font-bold text-white mb-1"><span class="counter" data-target="8">0</span>년</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-wider">전문 업력</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-white mb-1"><span class="counter" data-target="500">0</span>+</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-wider">프로젝트</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-white mb-1"><span class="counter" data-target="300">0</span>+</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-wider">고객사</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-white mb-1"><span class="counter" data-target="100">0</span>+</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-wider">AI 앱 개발</div>
+                        </div>
+                    </div>
+
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScJmd2aQMg-A-QJpOwUAQLjq4CnEEn1zZUqA-Fh0KzC7h-A2w/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary-950 bg-accent rounded-full hover:bg-yellow-300 transition-all shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] hover:-translate-y-1">
+                        교육 문의
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Right Image / UI Profile -->
+                <div class="relative reveal delay-200">
+                    <!-- Tech Frame -->
+                    <div class="relative aspect-[4/5] max-w-md mx-auto z-10 animate-float">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-[2rem] transform rotate-3 scale-105 opacity-50 blur-lg"></div>
+                        <div class="relative h-full w-full rounded-[2rem] overflow-hidden border border-white/20 bg-slate-900 flex items-center justify-center shadow-2xl">
+                            <!-- Direct Image Link goes here -->
+                            <img src="https://i.ibb.co/CpNTr37K/images.jpg" alt="CEO Profile" class="object-contain w-full h-full p-4 opacity-90 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700" />
+                            
+                            <!-- Overlay Gradient -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                            
+                            <!-- Floating Card Inside -->
+                            <div class="absolute bottom-6 left-6 right-6 glass rounded-xl p-5 border border-white/20 transform transition-transform hover:-translate-y-2">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="flex h-3 w-3 relative">
+                                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                                      <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                                    </span>
+                                    <span class="text-accent text-xs font-bold tracking-widest uppercase">Reference HRD</span>
+                                </div>
+                                <p class="text-white font-medium text-lg leading-snug">"데이터와 기술로 경험의 가치를 증명합니다."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why" class="py-24 bg-slate-900 border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-sm font-bold tracking-widest text-blue-500 uppercase mb-3">Why Reference HRD</h2>
+                <h3 class="text-3xl md:text-5xl font-bold text-white mb-6">AI 강사가 하는 교육과<br>HRD 회사의 AI 교육은 다릅니다</h3>
+                <p class="text-slate-400 text-lg">조직의 성과로 연결되려면, 교육을 설계할 줄 아는 사람이 AI를 다뤄야 합니다.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto reveal delay-200">
+                <!-- Bad Practice -->
+                <div class="glass rounded-2xl p-8 lg:p-10 border-t-4 border-t-red-500/50 opacity-70 hover:opacity-100 transition-opacity relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <svg class="w-24 h-24 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                        <span class="text-red-400">일반적인 AI 교육</span>
+                    </h4>
+                    <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-500 mt-1">✕</span>
+                            <span>범용 서비스(ChatGPT 등) 위주의 툴 소개 및 시연</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-500 mt-1">✕</span>
+                            <span>직무 특성 고려 없이 동일한 커리큘럼 일괄 적용</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-500 mt-1">✕</span>
+                            <span>강의 종료와 함께 프로젝트가 끝나는 단발성 교육</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-500 mt-1">✕</span>
+                            <span>단순 만족도 설문으로 교육 효과 측정 대체</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Reference HRD -->
+                <div class="glass rounded-2xl p-8 lg:p-10 border border-blue-500/30 bg-blue-900/10 shadow-[0_0_30px_rgba(59,130,246,0.1)] relative overflow-hidden transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 p-6 opacity-10">
+                        <svg class="w-24 h-24 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
+                    </div>
+                    <div class="inline-block px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold mb-4">HRD-FIRST APPROACH</div>
+                    <h4 class="text-2xl font-bold text-white mb-6">
+                        레퍼런스HRD의 솔루션
+                    </h4>
+                    <ul class="space-y-4 text-slate-200 font-medium">
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-400 mt-0.5">✓</span>
+                            <span>직무·직급별 Pain Point 진단 후 맞춤 커리큘럼 설계</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-400 mt-0.5">✓</span>
+                            <span>현업 과제를 실제로 해결하는 산출물 중심 실습</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-400 mt-0.5">✓</span>
+                            <span>교육 목적에 맞춘 자체 AI 앱을 직접 개발 및 투입</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-400 mt-0.5">✓</span>
+                            <span>교육 후 30~90일 적용 추적과 사내 확산 체계 구축</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-400 mt-0.5">✓</span>
+                            <span>진단-설계-운영-리포팅까지 원스톱 대행</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-slate-950 z-0"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-900/20 rounded-full blur-[150px] z-0 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-sm font-bold tracking-widest text-blue-500 uppercase mb-3">In-House Solutions</h2>
+                <h3 class="text-3xl md:text-5xl font-bold text-white mb-6">교육을 아는 회사가<br>AI를 직접 만듭니다</h3>
+                <p class="text-slate-400 text-lg">시중의 툴로 해결되지 않는 교육 목적은 자체 개발한 100여 개의 교육용 AI 앱으로 해결합니다.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 reveal delay-200">
+                <!-- App 1 -->
+                <div class="glass glass-card rounded-2xl p-8 transition-all duration-300 group cursor-default">
+                    <div class="w-14 h-14 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">AI 비즈니스<br>커뮤니케이션 시뮬레이터</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        신입부터 임원까지 직급별 실전 상황을 AI 페르소나와 1:1로 연습합니다. 발화에 따라 상대 표정이 실시간 변하고 즉각적인 코칭을 제공합니다.
+                    </p>
+                </div>
+                <!-- App 2 -->
+                <div class="glass glass-card rounded-2xl p-8 transition-all duration-300 group cursor-default">
+                    <div class="w-14 h-14 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">AI 성과면담<br>시뮬레이션</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        다양한 성향의 AI 팀원과 실전 같은 1:1 면담을 진행합니다. 대화를 정밀 분석해 리더별 개인화 코칭 리포트를 제공하며 무한 반복이 가능합니다.
+                    </p>
+                </div>
+                <!-- App 3 -->
+                <div class="glass glass-card rounded-2xl p-8 transition-all duration-300 group cursor-default">
+                    <div class="w-14 h-14 rounded-xl bg-green-500/20 border border-green-500/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">AI 바이브코딩<br>해커톤 플랫폼</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        코딩 지식 없이 자연어 대화만으로 현업에 필요한 업무용 앱을 기획하고 개발하며, 전사 경연까지 원스톱으로 진행할 수 있는 전용 플랫폼입니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="curriculum" class="py-24 bg-slate-900 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-sm font-bold tracking-widest text-blue-500 uppercase mb-3">Curriculum System</h2>
+                <h3 class="text-3xl md:text-5xl font-bold text-white mb-6">조직 성숙도에 맞춘<br>4단계 체계</h3>
+                <p class="text-slate-400 text-lg">전 임직원 리터러시부터 경영진의 의사결정까지 단계적으로 설계합니다.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal delay-200">
+                <!-- Step 1 -->
+                <div class="glass rounded-2xl p-6 border border-white/10 hover:border-blue-500/50 transition-colors relative group">
+                    <div class="absolute top-0 right-0 text-7xl font-bold text-white/5 -mt-2 -mr-2 group-hover:text-blue-500/10 transition-colors">01</div>
+                    <div class="relative z-10">
+                        <h4 class="text-blue-400 font-bold text-sm tracking-wider mb-2">LITERACY</h4>
+                        <h3 class="text-xl font-bold text-white mb-4 pb-4 border-b border-white/10">전 임직원 공통</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            생성형 AI 작동 원리와 최신 트렌드 이해, 사내 보안 가이드 및 AI 윤리 의식 함양
+                        </p>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="glass rounded-2xl p-6 border border-white/10 hover:border-blue-500/50 transition-colors relative group">
+                    <div class="absolute top-0 right-0 text-7xl font-bold text-white/5 -mt-2 -mr-2 group-hover:text-blue-500/10 transition-colors">02</div>
+                    <div class="relative z-10">
+                        <h4 class="text-blue-400 font-bold text-sm tracking-wider mb-2">WORK SMART</h4>
+                        <h3 class="text-xl font-bold text-white mb-4 pb-4 border-b border-white/10">실무 담당자</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            보고서/기획안 작성 시간 단축, 엑셀 데이터 분석 및 시각화 자동화, 프롬프트 실습
+                        </p>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="glass rounded-2xl p-6 border border-white/10 hover:border-blue-500/50 transition-colors relative group">
+                    <div class="absolute top-0 right-0 text-7xl font-bold text-white/5 -mt-2 -mr-2 group-hover:text-blue-500/10 transition-colors">03</div>
+                    <div class="relative z-10">
+                        <h4 class="text-blue-400 font-bold text-sm tracking-wider mb-2">INNOVATION</h4>
+                        <h3 class="text-xl font-bold text-white mb-4 pb-4 border-b border-white/10">기획·전략·마케팅</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            시장 분석 및 경쟁사 리서치 자동화, 신사업 발굴 및 BM 고도화, 고객 페르소나 분석
+                        </p>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="glass rounded-2xl p-6 border border-white/10 hover:border-blue-500/50 transition-colors relative group">
+                    <div class="absolute top-0 right-0 text-7xl font-bold text-white/5 -mt-2 -mr-2 group-hover:text-blue-500/10 transition-colors">04</div>
+                    <div class="relative z-10">
+                        <h4 class="text-blue-400 font-bold text-sm tracking-wider mb-2">LEADERSHIP</h4>
+                        <h3 class="text-xl font-bold text-white mb-4 pb-4 border-b border-white/10">팀장·임원</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            AI 도입 전략 수립 및 ROI 분석, 데이터 기반 성과관리 및 코칭, 하이브리드 조직 관리
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="instructors" class="py-24 relative overflow-hidden bg-slate-900 border-t border-white/5">
+        <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px] z-0 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-sm font-bold tracking-widest text-blue-500 uppercase mb-3">Expert Facilitators</h2>
+                <h3 class="text-3xl md:text-5xl font-bold text-white mb-6">검증된 HRD 전문가가<br>직접 설계하고 리드합니다</h3>
+                <p class="text-slate-400 text-lg">AI 기술력은 기본, 현업의 맥락을 이해하고 성과로 연결짓는 최고 수준의 교수진입니다.</p>
+            </div>
+
+            <div class="max-w-md mx-auto reveal delay-200">
+                <!-- Instructor 1 -->
+                <div class="glass glass-card rounded-2xl overflow-hidden group border border-white/10">
+                    <div class="h-80 overflow-hidden relative bg-slate-900 flex items-center justify-center">
+                        <!-- 프로필 이미지 교체 -->
+                        <img src="https://i.ibb.co/CpNTr37K/images.jpg" alt="페페 대표" class="w-full h-full object-contain p-4 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
+                    </div>
+                    <div class="p-8 relative -mt-16 z-10">
+                        <h4 class="text-2xl font-bold text-white mb-1">페페</h4>
+                        <p class="text-blue-400 font-medium text-sm mb-4">대표이사 / Chief AI Instructor</p>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6 h-20">
+                            대기업 임원 대상 AI 리더십 및 의사결정 과정을 전담합니다. 기술이 아닌 비즈니스 관점에서의 AI 활용 전략을 제시합니다.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs text-blue-300 font-medium">#AI리더십</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-slate-300">#경영진코칭</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clients" class="py-24 relative overflow-hidden bg-slate-950 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+                <h2 class="text-sm font-bold tracking-widest text-blue-500 uppercase mb-3">Trusted by Leaders</h2>
+                <h3 class="text-3xl md:text-5xl font-bold text-white mb-6">현장의 실질적인<br>성과 변화로 증명합니다</h3>
+            </div>
+
+            <!-- Infinite Marquee -->
+            <div class="relative w-full overflow-hidden flex mb-20 reveal before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-slate-950 before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-slate-950 after:to-transparent">
+                <div class="flex animate-marquee whitespace-nowrap gap-4 py-4">
+                    <!-- Original Set -->
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">SAMSUNG</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">HYUNDAI</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">SK</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">LG</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">LOTTE</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">POSCO</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">HANWHA</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">NAVER</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">KAKAO</span>
+                    <span class="px-6 py-3 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 font-bold tracking-wider">외 270+</span>
+                    <!-- Duplicate Set for infinite scroll -->
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">SAMSUNG</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">HYUNDAI</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">SK</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">LG</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">LOTTE</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">POSCO</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">HANWHA</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">NAVER</span>
+                    <span class="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-slate-300 font-bold tracking-wider">KAKAO</span>
+                    <span class="px-6 py-3 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 font-bold tracking-wider">외 270+</span>
+                </div>
+            </div>
+
+            <!-- 9 Reviews Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal delay-200">
+                <!-- Review 1 -->
+                <div class="glass glass-card p-8 rounded-2xl relative">
+                    <svg class="absolute top-6 left-6 w-8 h-8 text-blue-500/20" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zM25.864 4c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"></path></svg>
+                    <p class="relative z-10 text-slate-300 mt-6 mb-8 text-sm leading-relaxed">
+                        "영업 사원들이 제안서 작성에 쏟던 시간을 AI로 단축하면서, 고객 대면 시간이 주당 10시간 이상 늘어났습니다. 즉각적인 매출 향상으로 이어지는 실전 교육입니다."
+                    </p>
+                    <div class="mt-auto border-t border-white/10 pt-4 text-right">
+                        <span class="block font-bold text-white">K통신사</span>
+                        <span class="block text-xs text-slate-400">B2B영업본부 팀장</span>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="glass glass-card p-8 rounded-2xl relative">
+                    <svg class="absolute top-6 left-6 w-8 h-8 text-blue-500/20" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zM25.864 4c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"></path></svg>
+                    <p class="relative z-10 text-slate-300 mt-6 mb-8 text-sm leading-relaxed">
+                        "공장 내 안전 규정을 AI 챗봇으로 즉각 확인하게 되어 현장 관리자들의 업무 로드가 절반으로 줄었습니다. 현장의 실질적인 pain point를 정확히 짚어냈습니다."
+                    </p>
+                    <div class="mt-auto border-t border-white/10 pt-4 text-right">
+                        <span class="block font-bold text-white">H자동차</span>
+                        <span class="block text-xs text-slate-400">생산관리팀 책임</span>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="glass glass-card p-8 rounded-2xl relative">
+                    <svg class="absolute top-6 left-6 w-8 h-8 text-blue-500/20" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zM25.864 4c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"></path></svg>
+                    <p class="relative z-10 text-slate-300 mt-6 mb-8 text-sm leading-relaxed">
+                        "매일 쏟아지는 수천 건의 고객 VOC를 AI로 자동 분류하고 감성 분석하는 시스템을 교육 중에 직접 기획하여 바로 현장에 도입했습니다."
+                    </p>
+                    <div class="mt-auto border-t border-white/10 pt-4 text-right">
+                        <span class="block font-bold text-white">S백화점</span>
+                        <span class="block text-xs text-slate-400">CS혁신팀 매니저</span>
+                    </div>
+                </div>
+                <!-- Review 4 -->
+                <div class="glass glass-card p-8 rounded-2xl relative">
+                    <svg class="absolute top-6 left-6 w-8 h-8 text-blue-500/20" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zM25.864 4c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"></path></svg>
+                    <p class="relative z-10 text-slate-300 mt-6 mb-8 text-sm leading-relaxed">
+                        "방대한 특허와 논문 데이터를 AI로 요약하고 분석하는 실습 덕분에, 신제품 기획 단계의 리서치 기간이 3주에서 단 1주로 단축되었습니다."
+                    </p>
+                    <div class="mt-auto border-t border-white/10 pt-4 text-right">
+                        <span class="block font-bold text-white">S전자</span>
+                        <span class="block text-xs text-slate-400">선행기술연구소 수석</span>
+                    </div>
+                </div>
+                <!-- Review 5 -->
+                <div class="glass glass-card p-8 rounded-2xl relative">
+                    <svg class="absolute top-6 left-6 w-8 h-8 text-blue-500/20" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zM25.864 4c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"></path></svg>
+                    <p class="relative z-10 text-slate-300 mt-6 mb-8 text-sm leading-relaxed">
+                        "현장 작업일지와 감리 보고서를 음성 인식(STT)과 AI 요약으로 자동화하는 워크플로우를 구축해, 현장 소장님들의 행정 업무 스트레스가 획기적으로 줄었습니다."
+                    </p>
+                    <div class="mt-auto border-t border-white/10 pt-4 text-right">
+                        <span class="block font-bold text-white">G건설</span>
+                        <span class="block text-xs text-slate-400">현장관리팀 소장</span>
+                    </div>
+                </div>
+                <!-- Review 6 -->
+                <div class="glass glass-card p-8 rounded-2xl relative">
+                    <svg class="absolute top-6 left-6 w-8 h-8 text-blue-500/20" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zM25.864 4c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"></path></svg>
+                    <p class="relative z-10 text-slate-300 mt-6 mb-8 text-sm leading-relaxed">
+                        "AI 팀원과의 성과면담 시뮬레이션 덕분에 현장 반장들의 피드백 스킬이 눈에 띄게 개선되었습니다. 실패 비용 없이 연습할 수 있는 최고의 솔루션입니다."
+                    </p>
+                    <div class="mt-auto border-t border-white/10 pt-4 text-right">
+                        <span class="block font-bold text-white">H중공업</span>
+                        <span class="block text-xs text-slate-400">인재개발원 책임</span>
+                    </div>
+                </div>
+                <!-- Review 7 -->
+                <div class="glass glass-card p-8 rounded-2xl relative">
+                    <svg class="absolute top-6 left-6 w-8 h-8 text-blue-500/20" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zM25.864 4c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"></path></svg>
+                    <p class="relative z-10 text-slate-300 mt-6 mb-8 text-sm leading-relaxed">
+                        "사내 규정을 학습한 RAG 챗봇을 직원들이 직접 구축하는 실습을 통해, HR 부서의 단순 문의 응대 시간이 교육 한 달 만에 70% 감소했습니다."
+                    </p>
+                    <div class="mt-auto border-t border-white/10 pt-4 text-right">
+                        <span class="block font-bold text-white">P철강</span>
+                        <span class="block text-xs text-slate-400">HR혁신실 담당자</span>
+                    </div>
+                </div>
+                <!-- Review 8 -->
+                <div class="glass glass-card p-8 rounded-2xl relative">
+                    <svg class="absolute top-6 left-6 w-8 h-8 text-blue-500/20" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zM25.864 4c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"></path></svg>
+                    <p class="relative z-10 text-slate-300 mt-6 mb-8 text-sm leading-relaxed">
+                        "단순 카피 생성을 넘어, 자사 고객 페르소나에 맞춘 마케팅 메시지를 대량 생산하고 A/B 테스트하는 워크플로우를 현업 캠페인에 바로 적용 중입니다."
+                    </p>
+                    <div class="mt-auto border-t border-white/10 pt-4 text-right">
+                        <span class="block font-bold text-white">A화장품</span>
+                        <span class="block text-xs text-slate-400">디지털마케팅팀 프로</span>
+                    </div>
+                </div>
+                <!-- Review 9 -->
+                <div class="glass glass-card p-8 rounded-2xl relative">
+                    <svg class="absolute top-6 left-6 w-8 h-8 text-blue-500/20" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zM25.864 4c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"></path></svg>
+                    <p class="relative z-10 text-slate-300 mt-6 mb-8 text-sm leading-relaxed">
+                        "매장 재고 데이터와 외부 API를 연동하여 엑셀 자연어 분석을 수행하는 과정을 통해, 현장 점장들의 데이터 활용 능력이 비약적으로 상승했습니다."
+                    </p>
+                    <div class="mt-auto border-t border-white/10 pt-4 text-right">
+                        <span class="block font-bold text-white">C유통</span>
+                        <span class="block text-xs text-slate-400">SCM팀 파트장</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-slate-950 border-t border-white/10 pt-24 pb-12 relative overflow-hidden">
+        <!-- Abstract shape -->
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-full h-[300px] bg-blue-600/10 blur-[100px] rounded-full z-0"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">사내 교육, 어떻게 시작할지 고민이신가요?</h2>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+                대상과 인원, 고민하시는 지점만 알려주시면<br class="hidden sm:block"> 
+                사전 진단을 거쳐 <strong class="text-blue-400">맞춤 커리큘럼을 무상으로 제안</strong>드립니다.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16 glass rounded-3xl p-8 lg:p-12 border border-white/10 shadow-2xl">
+                <div>
+                    <h4 class="text-blue-500 font-bold tracking-wider text-sm mb-3 uppercase">Phone</h4>
+                    <p class="text-xl font-bold text-white">070-4647-4757</p>
+                </div>
+                <div class="md:border-l md:border-r border-white/10">
+                    <h4 class="text-blue-500 font-bold tracking-wider text-sm mb-3 uppercase">Email</h4>
+                    <p class="text-xl font-bold text-white">help@referencehrd.com</p>
+                </div>
+                <div>
+                    <h4 class="text-blue-500 font-bold tracking-wider text-sm mb-3 uppercase">Address</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">서울특별시 강서구 마곡동 757<br>두산더랜드파크 A동 410호</p>
+                </div>
+            </div>
+
+            <div class="text-sm text-slate-500 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4">
+                <span class="text-slate-400 font-bold">(주)레퍼런스에이치알디</span>
+                <span class="hidden md:inline text-slate-700">|</span>
+                <span>대표 박준형 강윤정</span>
+                <span class="hidden md:inline text-slate-700">|</span>
+                <span>사업자등록번호 887-81-01384</span>
+                <span class="hidden md:inline text-slate-700">|</span>
+                <span>여성기업 인증 제0118-2022-23209호</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal UI -->
+    <div id="authModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[100] hidden flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <div class="glass glass-card rounded-3xl p-8 w-full max-w-sm mx-4 relative transform scale-95 transition-transform duration-300" id="authModalContent">
+            <button id="closeAuthModal" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <div class="flex gap-4 border-b border-white/10 mb-6 pb-2">
+                <button id="tabLogin" class="text-white font-bold border-b-2 border-blue-500 pb-2 px-2 transition-all">로그인</button>
+                <button id="tabSignup" class="text-slate-400 font-medium hover:text-white pb-2 px-2 transition-all">회원가입</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1">이메일</label>
+                    <input type="email" id="loginEmail" required class="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="user@company.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1">비밀번호</label>
+                    <input type="password" id="loginPassword" required class="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="••••••••">
+                </div>
+                <div id="loginError" class="text-red-400 text-sm hidden"></div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-colors mt-2 shadow-[0_0_15px_rgba(37,99,235,0.4)]">로그인</button>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="space-y-4 hidden">
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1">이메일</label>
+                    <input type="email" id="signupEmail" required class="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="user@company.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1">비밀번호</label>
+                    <input type="password" id="signupPassword" required minlength="6" class="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="6자리 이상 입력">
+                </div>
+                <div id="signupError" class="text-red-400 text-sm hidden"></div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold transition-colors mt-2 shadow-[0_0_15px_rgba(147,51,234,0.4)]">가입하기</button>
+            </form>
+            
+            <div id="authSuccessMsg" class="hidden text-green-400 text-center font-medium py-4 mt-2"></div>
+        </div>
+    </div>
+
+    <script>
+        // Header background change on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-slate-950/80');
+                header.classList.remove('glass');
+            } else {
+                header.classList.remove('bg-slate-950/80');
+                header.classList.add('glass');
+            }
+        });
+
+        // Intersection Observer for Fade-up animations
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Animate only once
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Number Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const counterObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                
+                const counter = entry.target;
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    
+                    // Lower inc to slow and higher to speed up
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 10);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+                observer.unobserve(counter); // Count only once
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+    </script>
+
+    <!-- Firebase Auth 연동 스크립트 -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { 
+            getAuth, 
+            signInWithEmailAndPassword, 
+            createUserWithEmailAndPassword, 
+            signOut, 
+            onAuthStateChanged, 
+            signInWithCustomToken 
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        let app, auth;
+        
+        try {
+            // 시스템에서 제공하는 Firebase 환경 설정 로드
+            const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+            if (firebaseConfig) {
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+            } else {
+                console.warn("Firebase 설정이 없습니다. 인증 기능이 작동하지 않을 수 있습니다.");
+            }
+        } catch (e) {
+            console.error("Firebase 초기화 에러:", e);
+        }
+
+        if (auth) {
+            // 초기 토큰(관리자 제공 등)이 있다면 자동 로그인 처리
+            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                signInWithCustomToken(auth, __initial_auth_token).catch(console.error);
+            }
+
+            const authModal = document.getElementById('authModal');
+            const authModalContent = document.getElementById('authModalContent');
+            const headerAuthBtn = document.getElementById('headerAuthBtn');
+            const closeAuthModal = document.getElementById('closeAuthModal');
+            
+            const tabLogin = document.getElementById('tabLogin');
+            const tabSignup = document.getElementById('tabSignup');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            
+            const loginError = document.getElementById('loginError');
+            const signupError = document.getElementById('signupError');
+            const authSuccessMsg = document.getElementById('authSuccessMsg');
+
+            // 팝업 열기/닫기 애니메이션
+            const openModal = () => {
+                authModal.classList.remove('hidden');
+                setTimeout(() => {
+                    authModal.classList.remove('opacity-0');
+                    authModalContent.classList.remove('scale-95');
+                }, 10);
+            };
+
+            const closeModal = () => {
+                authModal.classList.add('opacity-0');
+                authModalContent.classList.add('scale-95');
+                setTimeout(() => {
+                    authModal.classList.add('hidden');
+                    resetForms();
+                }, 300); // Tailwind duration-300과 일치
+            };
+
+            // 헤더 버튼 클릭: 로그인 상태면 로그아웃, 아니면 팝업 열기
+            headerAuthBtn.addEventListener('click', () => {
+                if (auth.currentUser) {
+                    signOut(auth).then(() => {
+                        headerAuthBtn.innerText = '로그인';
+                    });
+                } else {
+                    openModal();
+                }
+            });
+            
+            closeAuthModal.addEventListener('click', closeModal);
+            // 배경 클릭 시 모달 닫기
+            authModal.addEventListener('click', (e) => {
+                if(e.target === authModal) closeModal();
+            });
+
+            const switchTab = (isLogin) => {
+                resetForms();
+                if (isLogin) {
+                    tabLogin.classList.add('border-b-2', 'border-blue-500', 'text-white', 'font-bold');
+                    tabLogin.classList.remove('text-slate-400', 'font-medium');
+                    tabSignup.classList.remove('border-b-2', 'border-blue-500', 'text-white', 'font-bold');
+                    tabSignup.classList.add('text-slate-400', 'font-medium');
+                    loginForm.classList.remove('hidden');
+                    signupForm.classList.add('hidden');
+                } else {
+                    tabSignup.classList.add('border-b-2', 'border-blue-500', 'text-white', 'font-bold');
+                    tabSignup.classList.remove('text-slate-400', 'font-medium');
+                    tabLogin.classList.remove('border-b-2', 'border-blue-500', 'text-white', 'font-bold');
+                    tabLogin.classList.add('text-slate-400', 'font-medium');
+                    signupForm.classList.remove('hidden');
+                    loginForm.classList.add('hidden');
+                }
+            };
+
+            tabLogin.addEventListener('click', () => switchTab(true));
+            tabSignup.addEventListener('click', () => switchTab(false));
+
+            const resetForms = () => {
+                loginForm.reset();
+                signupForm.reset();
+                loginError.classList.add('hidden');
+                signupError.classList.add('hidden');
+                authSuccessMsg.classList.add('hidden');
+            };
+
+            // 1. 로그인 전송
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                loginError.classList.add('hidden');
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                try {
+                    await signInWithEmailAndPassword(auth, email, password);
+                    loginForm.classList.add('hidden');
+                    authSuccessMsg.innerText = "로그인 성공! 환영합니다.";
+                    authSuccessMsg.classList.remove('hidden');
+                    setTimeout(closeModal, 1500);
+                } catch (error) {
+                    let msg = error.message;
+                    if (error.code === 'auth/invalid-credential') msg = '이메일이나 비밀번호가 일치하지 않습니다.';
+                    loginError.innerText = msg;
+                    loginError.classList.remove('hidden');
+                }
+            });
+
+            // 2. 회원가입 전송
+            signupForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                signupError.classList.add('hidden');
+                const email = document.getElementById('signupEmail').value;
+                const password = document.getElementById('signupPassword').value;
+                
+                try {
+                    await createUserWithEmailAndPassword(auth, email, password);
+                    signupForm.classList.add('hidden');
+                    authSuccessMsg.innerText = "회원가입 완료! 자동 로그인 되었습니다.";
+                    authSuccessMsg.classList.remove('hidden');
+                    setTimeout(closeModal, 1500);
+                } catch (error) {
+                    let msg = error.message;
+                    if (error.code === 'auth/email-already-in-use') msg = "이미 가입된 이메일입니다.";
+                    if (error.code === 'auth/weak-password') msg = "비밀번호는 6자리 이상이어야 합니다.";
+                    signupError.innerText = msg;
+                    signupError.classList.remove('hidden');
+                }
+            });
+
+            // 인증 상태 리스너 (헤더 UI 변경)
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    const displayName = user.email ? user.email.split('@')[0] : '사용자';
+                    headerAuthBtn.innerText = `로그아웃 (${displayName})`;
+                } else {
+                    headerAuthBtn.innerText = '로그인';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
